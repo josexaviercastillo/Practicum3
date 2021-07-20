@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+	    <title>Sistema Educativo Para Crear Contenido Gigital</title>
+	    <meta charset="utf-8">
+	    <meta name="keywords" content="educacion digital, foros, documentos, aprendizaje">
+	    <meta name="description" content="Sistema educativo de Competencias digitales">
+	    <meta name="author" content="José Xavier Castillo">
+	    <link rel="icon" href="Imagenes/logo.ico">
+	    <link rel="stylesheet" type="text/css" href="CSS/Estilos.css">
+    </head>
+    <body background="Imagenes/fondo.jpg">
+	   <div class="super">
+	       	<h1>Sistema Educativo Para Crear Contenido Gigital</h1>
+	        <img src="Imagenes/img0.jpg" 
+	        height="100" width="100" 
+	        alt="logo">
+	   </div> 
+	 
+
+        <!-- Lista de Páginas-->
+
+        <header>
+	        <nav>
+		        <ul>
+			        <li><a href="index.html">Inicio</a></li>
+                    <li><a href="CrearDocumento.html">Crear Documento</a></li>
+                    <li><a href="CrearImagenes.html">Crear Imagenes </a></li>
+                    <li><a href="CrearVideos.html">Crear Videos</a></li>
+		        </ul>
+	        </nav>
+        </header> 
+
+         <!--Slogan e Imagenes--> 
+         
+
+        <!-- Información Relevante-->
+
+        <article>
+        	<div>
+        	<h3>CUESTIONARIO 3</h3>
+        	
+			      <div id="test"></div>
+    				<button id="boton">Mostrar resultado</h1></button>
+   				 	<div id="resultado"></div>
+    				<script>
+            
+
+
+const contenedor = document.getElementById("test");
+const botonRes = document.getElementById("boton");
+const resultadoTest = document.getElementById("resultado");
+
+const preguntas = [
+  {
+    pregunta: "1. Que es Powtoon?",
+    respuestas: {
+      a: "Creador de videos",
+      b: "Creador de fotos",
+      c: "Creador de texto",
+    },
+    respuestaCorrecta: "a",
+  },
+  {
+    pregunta: "2. Cual de las siguientes opciones es un paso para crear videos?",
+    respuestas: {
+      a: "Hacer un recorrido por el sistema ",
+      b: "Elaborar un guión",
+      c: "Seleccionar la aplicación ",
+    },
+    respuestaCorrecta: "b",
+  },
+  {
+    pregunta: "3. Que es VYOND?",
+    respuestas: {
+      a: "Un videojuego ",
+      b: "Un programa de TV",
+      c: "Un creador de videos  ",
+    },
+    respuestaCorrecta: "c",
+  },
+  {
+    pregunta: "4. Que es Explaindio?",
+    respuestas: {
+      a: "Editor de texto",
+      b: "Red social",
+      c: "Ninguna de las anteriores ",
+    },
+    respuestaCorrecta: "c",
+  },
+  {
+    pregunta: "5. Los editores de video son dificiles de manejar?",
+    respuestas: {
+      a: "No ",
+      b: "Siempre",
+      c: "A veces ",
+    },
+    respuestaCorrecta: "c",
+  },
+];
+
+function mostrarTest() {
+  const preguntasYrespuestas = [];
+
+  preguntas.forEach((preguntaActual, numeroDePregunta) => {
+    const respuestas = [];
+
+    for (letraRespuesta in preguntaActual.respuestas) {
+      respuestas.push(
+        `<label>
+                  <input type="radio" name="${numeroDePregunta}" value="${letraRespuesta}" />
+                  ${letraRespuesta} : ${preguntaActual.respuestas[letraRespuesta]}
+              </label>`
+      );
+    }
+
+    preguntasYrespuestas.push(
+      `<div class="cuestion">${preguntaActual.pregunta}</div>
+          <div class="respuestas"> ${respuestas.join("")} </div>
+          `
+    );
+  });
+
+  contenedor.innerHTML = preguntasYrespuestas.join("");
+}
+
+mostrarTest();
+
+function mostrarResultado() {
+  const respuestas = contenedor.querySelectorAll(".respuestas");
+  let respuestasCorrectas = 0;
+
+  preguntas.forEach((preguntaActual, numeroDePregunta) => {
+    const todasLasRespuestas = respuestas[numeroDePregunta];
+    const checkboxRespuestas = `input[name='${numeroDePregunta}']:checked`;
+    const respuestaElegida = (
+      todasLasRespuestas.querySelector(checkboxRespuestas) || {}
+    ).value;
+
+    if (respuestaElegida === preguntaActual.respuestaCorrecta) {
+      respuestasCorrectas++;
+
+      respuestas[numeroDePregunta].style.color = "blue";
+    } else {
+      respuestas[numeroDePregunta].style.color = "red";
+    }
+  });
+
+  resultadoTest.innerHTML =
+    "Usted ha acertado " +
+    respuestasCorrectas +
+    " preguntas de un total de " +
+    preguntas.length;
+}
+
+botonRes.addEventListener("click", mostrarResultado);
+            
+                    </script>
+            </div>
+
+        </article>
+         <!-- Pie de Página-->
+        <footer>
+	        <div>
+	        	<hr>
+	            <h6 class="cont">Contactos</h6>
+                <div class="pie">
+                	<h6>José Xavier Castillo 0984379160</h6>
+                	<ul>
+			        <li id="a"><a href="https://www.facebook.com/"><img class="imagen "src="Imagenes/facebook.png" 
+	                 height="30" width="30"></a></li>
+                    <li id="b"><a href="https://api.whatsapp.com/send?phone=593984379160&text=Mensaje" target="_blank"><img class=" imagen "src="Imagenes/wpp.png"  
+	                 height="30" width="30"></a></li>
+                    <li id="c"><a href="https://www.instagram.com/"><img class=" imagen "src="Imagenes/instagram.jpg" 
+	                 height="30" width="30"></a></li>
+                    </ul>
+                </div>
+            </div>
+                 <h5 >Copyrights ©2021: José Castillo</h5><br>
+           
+        </footer>
+    </body>
+</html>
